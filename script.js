@@ -24,7 +24,12 @@
         return;
       }
       if (window.posthog && typeof window.posthog.capture === 'function') {
-        window.posthog.capture('waitlist_submit', {
+        window.posthog.capture('email_submitted', {
+          email: email,
+          site_id: siteId,
+          site_name: window.SITE_NAME || siteId,
+        });
+        window.posthog.capture('waitlist_signup', {
           email: email,
           site_id: siteId,
           site_name: window.SITE_NAME || siteId,
